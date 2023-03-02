@@ -1,9 +1,14 @@
+Each header (VM, Docker, LXC / CT) are different ways you can install this. Out of all of these, I think the LXC / CT turnkey approach is the most user friendly while providing the best security out of the box.
+
+All this being said, I don't use Wordpress any longer. But these are my install notes for when I did.
+
+
 # Installation Options #
 
 ## VM ##
 
 - Create the VM or use an existing VM
-- Login via Windows Terminal
+- Login via terminal
 
 ```
 sudo apt update && sudo apt upgrade -y
