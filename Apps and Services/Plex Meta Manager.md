@@ -1,8 +1,10 @@
 These are my actual configs and will be updated as I get to them (as of this writing SHOWS still has no configs because I've spent all of my time on MOVIES so far)
 
-# Install on Bare Metal #
+# Docker Install #
 
 ## Initial Setup ##
+
+This docker install is different that your average container install as you need to set up the directories and configs first AND THEN run them with a docker command. It'll make sense as you read along.
 
 ```
 sudo mkdir /docker/appdata/plex-meta-manager
