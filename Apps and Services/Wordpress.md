@@ -1,6 +1,6 @@
 # Installation Options #
 
-## Ubuntu VM ##
+## VM ##
 
 - Create the VM or use an existing VM
 - Login via Windows Terminal
@@ -63,15 +63,15 @@ QUIT;
 ```
 
 ```
-sudo nano /etc/apache2/sites-available/thecanpart.com.conf
+sudo nano /etc/apache2/sites-available/yourwebsite.com.conf
 ```
 
 ```c
 <VirtualHost *:80>
-     ServerAdmin mrjohnnycake@gmail.com
-     ServerName thecanpart.com
-     ServerAlias www.thecanpart.com
-     DocumentRoot /var/www/thecanpart.com/
+     ServerAdmin youremail@gmail.com
+     ServerName yourwebsite.com
+     ServerAlias www.yourwebsite.com
+     DocumentRoot /var/www/yourwebsite.com/
 </VirtualHost>
 ```
 
@@ -88,19 +88,19 @@ cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
 
 mkdir /tmp/wordpress/wp-content/upgrade
 
-sudo cp -a /tmp/wordpress/. /var/www/thecanpart.com
+sudo cp -a /tmp/wordpress/. /var/www/yourwebsite.com
 
 sudo rm latest.tar.gz
 
 sudo rm -rf wordpress
 
-sudo chown -R www-data:www-data /var/www/thecanpart.com
+sudo chown -R www-data:www-data /var/www/yourwebsite.com
 
-sudo find /var/www/thecanpart.com/ -type d -exec chmod 750 {} \;
+sudo find /var/www/yourwebsite.com/ -type d -exec chmod 750 {} \;
 
-sudo find /var/www/thecanpart.com/ -type f -exec chmod 640 {} \;
+sudo find /var/www/yourwebsite.com/ -type f -exec chmod 640 {} \;
 
-sudo a2ensite thecanpart.com.conf
+sudo a2ensite yourwebsite.com.conf
 
 sudo a2dissite 000-default.conf
 
@@ -114,7 +114,7 @@ curl -s https://api.wordpress.org/secret-key/1.1/salt/
 - Copy the output into a note somewhere and insert in place of the temporary code in this next file:
 
 ```
-sudo nano /var/www/thecanpart.com/wp-config.php
+sudo nano /var/www/yourwebsite.com/wp-config.php
 ```
 
 ```php
@@ -208,8 +208,8 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-define('WP_SITEURL','https://thecanpart.com');
-define('WP_HOME','https://thecanpart.com');
+define('WP_SITEURL','https://yourwebsite.com');
+define('WP_HOME','https://yourwebsite.com');
 
 /* That's all, stop editing! Happy publishing. */
 
@@ -222,9 +222,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once ABSPATH . 'wp-settings.php';
 ```
 
-- Go to Nginx Proxy Manager and point thecanpart.com at the VM IP address, port 80 and set the SSL certificate
+- Go to Nginx Proxy Manager and point yourwebsite.com at the VM IP address, port 80 and set the SSL certificate
 
-- Go to http://192.168.70.72 to set up Wordpress. It's pretty straightforward. It should also have redirected the address to thecanpart.com
+- Go to http://192.168.70.72 to set up Wordpress. It's pretty straightforward. It should also have redirected the address to yourwebsite.com
 
 - That's it. Consult https://www.flash2hack.com/?p=543 and https://www.flash2hack.com/?p=603 for any issues.
 
@@ -235,11 +235,11 @@ require_once ABSPATH . 'wp-settings.php';
 ```
 <VirtualHost *:80>
 
-ServerAdmin mrjohnnycake@gmail.com
+ServerAdmin youremail@gmail.com
 
 DocumentRoot /var/www/html/wordpress
-ServerName thecanpart.com
-ServerAlias www.thecanpart.com
+ServerName yourwebsite.com
+ServerAlias www.yourwebsite.com
 
 <Directory /var/www/html/wordpress/>
 
@@ -358,8 +358,8 @@ Further down look for this section and make it look like this:
 ```
 // Single-Site (serves any hostname)
 // For Multi-Site, see: https://www.turnkeylinux.org/docs/wordpress/multisite
-define('WP_SITEURL','https://thecanpart.com');
-define('WP_HOME','https://thecanpart.com');
+define('WP_SITEURL','https://yourwebsite.com');
+define('WP_HOME','https://yourwebsite.com');
 ```
 
 
